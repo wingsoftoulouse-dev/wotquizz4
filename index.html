@@ -3,60 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz d'Entraînement - Wings Of Toulouse (Quiz 4)</title>
+    <title>Quiz Culture Aéronautique</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background-color: #f5f5f5; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        h1 { color: #04143B; text-align: center; margin-bottom: 10px; }
-        .subtitle { text-align: center; color: #666; margin-bottom: 30px; line-height: 1.6; }
-        .event-info { background: linear-gradient(135deg, #04143B 0%, #0a2865 100%); color: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: center; }
-        .event-info h2 { font-size: 22px; margin-bottom: 10px; }
-        .event-info p { font-size: 16px; line-height: 1.5; }
-        .question { margin-bottom: 25px; padding: 15px; background: #f9f9f9; border-radius: 4px; }
-        .question-title { color: #04143B; font-weight: bold; margin-bottom: 10px; }
-        .option { margin: 8px 0; }
-        .option input[type="radio"] { margin-right: 8px; }
-        .submit-btn { width: 100%; padding: 15px; background-color: #04143B; color: white; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; font-weight: bold; }
-        .submit-btn:hover { background-color: #06194d; }
-        .result { display: none; padding: 20px; }
-        .result h2 { color: #04143B; text-align: center; margin-bottom: 20px; }
-        .score { font-size: 24px; color: #04143B; text-align: center; margin: 20px 0; font-weight: bold; }
-        .result-message { background: #e8f4ff; padding: 20px; border-radius: 8px; margin: 20px 0; color: #04143B; text-align: center; line-height: 1.6; }
-        .tombola-section { margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #04143B 0%, #0a2865 100%); border-radius: 8px; text-align: center; color: white; }
-        .tombola-btn { display: inline-block; margin-top: 10px; padding: 12px 30px; background-color: white; color: #04143B; text-decoration: none; border-radius: 4px; font-weight: bold; transition: transform 0.2s; }
-        .tombola-btn:hover { transform: scale(1.05); }
-        .correction { margin-top: 30px; padding: 20px; background: #f9f9f9; border-radius: 8px; }
-        .correction-item { padding: 10px; margin: 8px 0; border-left: 4px solid #04143B; background: white; }
-        .correction-item.correct { border-left-color: #28a745; background: #f0fff4; }
-        .correction-item.incorrect { border-left-color: #dc3545; background: #fff5f5; }
-        .error { color: red; margin-top: 10px; text-align: center; display: none; }
-
-        @keyframes blink {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(1.07); }
-            100% { opacity: 1; transform: scale(1); }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: linear-gradient(135deg, #04143b 0%, #0a2865 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
-
-        .blink {
-            animation: blink 1.5s infinite;
+        .container { 
+            max-width: 600px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 25px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
+        }
+        h1 { 
+            color: #04143b; 
+            text-align: center; 
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle { 
+            text-align: center; 
+            color: #666; 
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        .intro { 
+            background: linear-gradient(135deg, #04143b 0%, #0a2865 100%);
+            color: white; 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin-bottom: 25px; 
+            text-align: center; 
+        }
+        .intro h2 { 
+            font-size: 20px; 
+            margin-bottom: 8px; 
+        }
+        .intro p { 
+            font-size: 15px; 
+        }
+        .question { 
+            margin-bottom: 20px; 
+            padding: 15px; 
+            background: #f0f4ff; 
+            border-radius: 12px;
+            border-left: 4px solid #04143b;
+        }
+        .question-title { 
+            color: #333; 
+            font-weight: 600; 
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+        .option { 
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            background: #e6ecff;
+            transform: translateX(5px);
+        }
+        .option input[type="radio"] { 
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .submit-btn { 
+            width: 100%; 
+            padding: 15px; 
+            background: linear-gradient(135deg, #04143b 0%, #0a2865 100%);
+            color: white; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 18px; 
+            cursor: pointer; 
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .submit-btn:hover { 
+            transform: scale(1.02);
+        }
+        .result { 
+            display: none; 
+        }
+        .result h2 { 
+            color: #04143b; 
+            text-align: center; 
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .score { 
+            font-size: 48px; 
+            color: #04143b; 
+            text-align: center; 
+            margin: 25px 0;
+            font-weight: bold;
+        }
+        .result-message { 
+            background: linear-gradient(135deg, #04143b 0%, #0a2865 100%);
+            color: white;
+            padding: 20px; 
+            border-radius: 15px; 
+            margin: 20px 0;
+            text-align: center; 
+            line-height: 1.8;
+        }
+        .correction { 
+            margin-top: 30px; 
+            padding: 20px; 
+            background: #f0f4ff; 
+            border-radius: 15px; 
+        }
+        .correction h3 {
+            color: #04143b;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .correction-item { 
+            padding: 12px; 
+            margin: 10px 0; 
+            border-left: 4px solid #04143b; 
+            background: white;
+            border-radius: 8px;
+        }
+        .correction-item.correct { 
+            border-left-color: #28a745; 
+            background: #f0fff4; 
+        }
+        .correction-item.incorrect { 
+            border-left-color: #dc3545; 
+            background: #fff5f5; 
+        }
+        .error { 
+            color: #dc3545; 
+            margin-top: 15px; 
+            text-align: center; 
+            display: none;
+            font-weight: 600;
+        }
+        .restart-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            color: #04143b;
+            border: 2px solid #04143b;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.2s;
+        }
+        .restart-btn:hover {
+            background: #04143b;
+            color: white;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div id="quiz-section">
-        <h1>🛩️ Culture aéronautique – Quiz n°4</h1>
-        <p class="subtitle">Wings Of Toulouse</p>
+        <h1>✈️ Quiz Culture Aéronautique</h1>
+        <p class="subtitle">Teste tes connaissances !</p>
 
-        <div class="event-info">
-            <h2>Test ton niveau en culture aéronautique !</h2>
-            <p>🎁 Participe à notre quiz et devient incollable !</p>
+        <div class="intro">
+            <h2>🎯 Prêt(e) pour le défi ?</h2>
+            <p>10 questions pour tester ta culture aéronautique !</p>
         </div>
-
-        <p style="text-align: center; margin-bottom: 30px; color: #666; font-style: italic;">
-            Voici 10 nouvelles questions de culture aéronautique pour t'entraîner !
-        </p>
 
         <form id="quiz-form">
 
@@ -150,31 +271,24 @@
                 <div class="option"><input type="radio" name="q10" value="d"> Aucun effet particulier</div>
             </div>
 
-            <div class="error" id="form-error">⚠️ Veuillez répondre à toutes les questions</div>
-            <button type="submit" class="submit-btn">Voir mon résultat</button>
+            <div class="error" id="form-error">⚠️ Réponds à toutes les questions avant de valider !</div>
+            <button type="submit" class="submit-btn">Voir mon résultat 🎯</button>
         </form>
     </div>
 
     <!-- SECTION RESULTATS -->
     <div id="result-section" class="result">
-        <h2>📊 Ton résultat</h2>
-        <div class="score">Score : <span id="score-display"></span>/10</div>
+        <h1>📊 Ton Résultat</h1>
+        <div class="score"><span id="score-display"></span>/10</div>
 
         <div class="result-message" id="result-message"></div>
 
-        <div class="tombola-section">
-            <h3>🎫 Participe à notre tombola !</h3>
-            <p>Tente ta chance pour gagner un vol en avion !</p>
-            
-            <a href="https://tally.so/r/MeKJa0" target="_blank" class="tombola-btn blink">
-                🎁 Je veux gagner 
-            </a>
-        </div>
-
         <div class="correction">
-            <h3>✅ Correction des réponses</h3>
+            <h3>✅ Correction Détaillée</h3>
             <div id="correction-list"></div>
         </div>
+
+        <button class="restart-btn" onclick="location.reload()">🔄 Refaire le quiz</button>
     </div>
 </div>
 
@@ -206,10 +320,10 @@
     ];
 
     const resultMessages = {
-        perfect: "🏆 <strong>PARFAIT !</strong><br>Tu es un vrai expert en aviation !",
-        excellent: "🌟 <strong>EXCELLENT !</strong><br>Encore un petit effort pour atteindre la perfection !",
-        good: "👍 <strong>BIEN JOUÉ !</strong><br>Tu progresses très bien !",
-        candobetter: "💪 <strong>CONTINUE !</strong><br>Avec un peu d'entraînement tu vas t'améliorer !"
+        perfect: "🏆 <strong>PARFAIT !</strong><br>Tu es un véritable expert en aéronautique ! 🎉",
+        excellent: "🌟 <strong>EXCELLENT !</strong><br>Bravo, tu as une super culture aéronautique ! 👏",
+        good: "👍 <strong>BIEN JOUÉ !</strong><br>Tu t'en sors très bien ! Continue comme ça ! 💪",
+        candobetter: "📚 <strong>PAS MAL !</strong><br>Avec un peu de révisions, tu vas cartonner ! 🚀"
     };
 
     document.getElementById('quiz-form').addEventListener('submit', function(e) {
@@ -225,7 +339,10 @@
                 break;
             }
         }
-        if (!allAnswered) { formError.style.display = 'block'; return; }
+        if (!allAnswered) { 
+            formError.style.display = 'block'; 
+            return; 
+        }
 
         let score = 0;
         let userAnswers = {};
@@ -261,7 +378,7 @@
 
         document.getElementById('quiz-section').style.display = 'none';
         document.getElementById('result-section').style.display = 'block';
-        setTimeout(() => window.scrollTo({ top: 0, behavior: smooth' }), 50);
+        setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
     });
 </script>
 
